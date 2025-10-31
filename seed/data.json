@@ -1,0 +1,27 @@
+[
+  {
+    "title": "Message from TravelBuddy",
+    "content": "Hey! Are you free this weekend for a quick hiking trip?",
+    "received": "5 minutes ago"
+  },
+  {
+    "title": "Message from FoodieFan",
+    "content": "Just tried that new pizza place downtown — you HAVE to check it out!",
+    "received": "30 minutes ago"
+  },
+  {
+    "title": "Message from CodingGuru",
+    "content": "I found a neat trick to optimize your React app. Want me to send it?",
+    "received": "3 hours ago"
+  },
+  {
+    "title": "Message from BookLover",
+    "content": "I just finished reading that novel you recommended. It was amazing!",
+    "received": "7 hours ago"
+  },
+  {
+    "title": "Message from MovieBuff",
+    "content": "Are you going to the new Marvel release this weekend?",
+    "received": "1 day ago"
+  }
+]
