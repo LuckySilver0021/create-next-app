@@ -53,7 +53,7 @@ export default function SendMessage() {
               render={({ field }) => (
                 <FormItem className="space-y-2">
                   <FormLabel className="text-gray-300 text-sm md:text-base">
-                    Message to @{username}
+                    Message to {username}
                   </FormLabel>
                   <FormControl>
                     <Textarea
