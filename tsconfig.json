@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "typeRoots": [
-      "./src/types",
-      "./node_modules/@types"
-    ],
+    "target": "esnext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -21,21 +17,27 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "types": [
+      "node",
+      "bcryptjs"
+    ],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "next-env.d.ts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
