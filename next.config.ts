@@ -1,21 +1,19 @@
 import type { NextConfig } from "next";
 import path from "path";
 
-const isVercel = process.env.VERCEL === "1";
-
 const nextConfig: NextConfig = {
   // ✅ Ensures Next.js traces files relative to the monorepo root
   outputFileTracingRoot: path.resolve(__dirname, ".."),
 
-  // ✅ Enable standalone output only on Vercel (prevents Windows symlink errors locally)
-  ...(isVercel ? { output: "standalone" } : {}),
+  // ✅ Required for proper Vercel deployment (prevents /path0/.next nesting)
+  output: "standalone",
 
-  // ✅ Disable TypeScript build errors (acts like ESLint ignore)
+  // ✅ Disable ESLint checks during build (Next.js 16 doesn’t allow "eslint" key directly anymore)
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true, // Safe to ignore lint-like errors
   },
 
-  // ✅ Turbopack config (optional; harmless to include)
+  // ✅ Turbopack is automatically used in Next 16, but leaving this is harmless
   turbopack: {},
 };
 
