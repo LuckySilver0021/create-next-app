@@ -5,5 +5,8 @@ export interface ApiResponse<T> {
   message: string;
   isAcceptingMessages?: boolean;
   messages?: Array<Message>;
+  // Optional additional payload or error info
+  data?: T;
+  error?: any;
 }
 

@@ -78,14 +78,29 @@ export async function POST(request: Request) {
         },
         { status: 201 }
       );
-    }
-    else{
-        console.error("Error sending verification email:", emailRes.message);
+    } else {
+      console.error("Error sending verification email:", emailRes.message, emailRes.error || 'no error object');
+      // If Brevo rejected the sender, still return 201 but include a warning so frontend can inform the user/admin
+      const errCode = emailRes.error?.code;
+      if (errCode === 'invalid_sender') {
         return Response.json(
-            {
-              message: "Error sending verification email",
-              success: false,
-        },{status: 500})
+          {
+            message: "User registered but verification email could not be sent: sender not validated in Brevo. Please verify your sender or authenticate your domain.",
+            success: true,
+            emailSent: false,
+            emailError: emailRes.error?.body || emailRes.error,
+          },
+          { status: 201 }
+        );
+      }
+
+      return Response.json(
+        {
+          message: "Error sending verification email",
+          success: false,
+        },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error("Error registering user:", error);
